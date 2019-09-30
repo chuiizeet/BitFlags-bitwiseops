@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class AttributeManager : MonoBehaviour
 {
     public Text attributeDisplay;
+    int attributes = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class AttributeManager : MonoBehaviour
     {
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
         attributeDisplay.transform.position = screenPoint + new Vector3(0,-50,0);
+        attributeDisplay.text = Convert.ToString(attributes,2).PadLeft(8, '0');
     }
        
 }
