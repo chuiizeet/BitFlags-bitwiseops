@@ -12,7 +12,7 @@ public class AttributeManager : MonoBehaviour
     static public int FLY = 2;
     static public int INVISIBLE = 1;
     public Text attributeDisplay;
-    int attributes = 0;
+    public int attributes = 0;
 
     
     private void OnTriggerEnter(Collider other) 
@@ -36,6 +36,18 @@ public class AttributeManager : MonoBehaviour
         else if (other.gameObject.tag == "INVISIBLE")
         {
             attributes |= INVISIBLE;
+        }
+        else if (other.gameObject.tag == "ANTIMAGIC")
+        {
+            attributes &= ~MAGIC;
+        }
+        else if (other.gameObject.tag == "ADDMULTIPLE")
+        {
+            attributes |= (MAGIC | INVISIBLE);
+        }
+        else if (other.gameObject.tag == "REMOVEMULTIPLE")
+        {
+            attributes &= ~(MAGIC | INVISIBLE);
         }
     }
 
